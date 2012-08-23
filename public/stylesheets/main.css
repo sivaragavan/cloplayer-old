@@ -1,0 +1,86 @@
+html > body #header {
+	position: fixed;
+}
+
+html, body {
+	height: 100%;
+	overflow: auto;
+}
+
+#header {
+	margin: 0 auto;
+	width: 100%;
+	background: #222222;
+	position: absolute;
+	top: 0;
+	left: 0;
+	-moz-box-shadow: 0 0 5px 5px #222222;
+	-webkit-box-shadow: 0 0 5px 5px #222222;
+	box-shadow: 0 0 5px 5px #222222;
+}
+
+#hcontainer {
+	width: 940px;
+	margin: 0 auto;
+}
+
+.ui-progressbar {
+	width: 700px;
+	margin: 0 auto;
+	background: #222222;
+	height: 5px;
+	border: 0px;
+	-moz-border-radius: 0px;
+	-webkit-border-radius: 0px;
+	-khtml-border-radius: 0px;
+	border-radius: 0px;
+}
+
+.ui-progressbar-value {
+	background: #237abf;
+	width: 0%;
+	margin: 0 auto;
+	height: 5px;
+	border: 0px;
+	-moz-border-radius: 0px;
+	-webkit-border-radius: 0px;
+	-khtml-border-radius: 0px;
+	border-radius: 0px;
+}
+
+#content {
+	width: 680px;
+	margin: 0 auto;
+}
+
+#title {
+	font-family: 'Source Sans Pro', sans-serif;
+	font-size: xx-large;
+	padding-top: 86px;
+	color: #222222;
+}
+
+#details {
+	font-family: 'Source Sans Pro', sans-serif;
+	font-size: larger;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	color: #666666;
+}
+
+#footer {
+	margin: 0 auto;
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+}
+
+#players {
+	display: none;
+}
+
+* {
+	margin: 0px;
+	padding: 0px;
+}
