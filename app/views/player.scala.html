@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 
 <html>
-    <head>
-        <title>Cloplayer</title>
+	<head>
+		<title>Cloplayer</title>
 
-        <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
-        <link rel="stylesheet" href="@routes.Assets.at("stylesheets/jquery-ui-1.8.22.custom.css")">
+		<link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
+		<link rel="stylesheet" href="@routes.Assets.at("stylesheets/jquery-ui-1.8.22.custom.css")">
 		<link rel="stylesheet" href="@routes.Assets.at("stylesheets/main.css")">
 
 		<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
@@ -16,56 +16,41 @@
 		<script src="@routes.Assets.at("javascripts/main.js")"></script>
 		<script>
 			$(document).ready(function() {
-
-				$("#jquery_jplayer_intro").jPlayer({
-					ready : function(event) {
-						$(this).jPlayer("setMedia", {
-							wav : "@routes.Assets.at("images/intro.wav")"
-						});
-						$(this).jPlayer("play");
-					},
-					swfPath : "http://www.jplayer.org/2.1.0/js",
-					solution : 'html, flash',
-					supplied : "wav"
-				});
-
-				//loadUrl();
-				
-				$("#comet-container").html('<iframe id="comet" src="/article/parse?url=' + window.location.hash.substring(1) + '"></iframe>');
-				
+				onLoad();
 			});
-			
 		</script>
 
 		<link href="http://jplayer.org/latest/skin/blue.monday/jplayer.blue.monday.css" rel="stylesheet" type="text/css" />
-		
-    </head>
-    <body>
-    
-        <div id="comet-container" style="display: none;">
-    	</div>
-    
-        <div id="header">
+
+	</head>
+	<body>
+
+		<div id="comet-container"></div>
+
+		<div id="header">
 			<div id="hcontainer">
 				<img id="logo" src="@routes.Assets.at("images/logo_web.png")">
 			</div>
 		</div>
 
 		<div id="content">
-        	<div id="title">
+			<div id="title">
 				Headline
 			</div>
 			<div id="details">
 				Details
 			</div>
-        </div>
-        
-       	<div id="footer">
+		</div>
+
+		<div id="footer">
+			<div id="play" class="play">
+				||
+			</div>
 			<div id="progressBar"></div>
 		</div>
 
 		<div id="players">
 			<div id="jquery_jplayer_intro" class="jp-jplayer"></div>
 		</div>
-    </body>
+	</body>
 </html>
