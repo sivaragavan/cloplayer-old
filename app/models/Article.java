@@ -1,16 +1,14 @@
 package models;
 
 import java.io.File;
+import java.util.Iterator;
 import java.util.List;
 import java.util.UUID;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-import org.json.JSONObject;
-
 import play.Logger;
-import play.data.validation.Constraints;
 import play.db.ebean.Model;
 import plugins.S3Plugin;
 
@@ -54,7 +52,8 @@ public class Article extends Model {
 	}
 
 	public static Article findByUrl(String url) {
-		return find.fetch("url", url).findList().iterator().next();
+		Iterator<Article> it = find.fetch("url", url).findList().iterator();
+		return it.hasNext() ? it.next() : null;
 	}
 
 	public String getFileName(int index) {
