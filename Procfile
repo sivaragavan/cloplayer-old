@@ -1,1 +1,1 @@
-web: target/start -Dhttp.port=${PORT} ${JAVA_OPTS} -Ddb.default.driver=org.postgresql.Driver -Ddb.default.url=postgres://kcosdcfrdoctzs:vbKMDTnArZEm4n8ae52emm7x6r@ec2-23-21-209-178.compute-1.amazonaws.com:5432/d2itjgso7gkl32
+web: target/start -Dhttp.port=${PORT} ${JAVA_OPTS} -DapplyEvolutions.default=true -Ddb.default.driver=org.postgresql.Driver -Ddb.default.url=${DATABASE_URL}
