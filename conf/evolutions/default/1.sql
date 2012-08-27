@@ -13,9 +13,8 @@ create table article (
 ;
 
 
-
-
 # --- !Downs
 
 drop table if exists article;
 
+#-DapplyEvolutions.default=true
