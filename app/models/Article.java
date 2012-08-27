@@ -30,7 +30,8 @@ public class Article extends Model {
 	public static Finder<Long, Article> find = new Finder(Long.class,
 			Article.class);
 
-	public Article(String url, String title, String text, Integer totalLength, String jsonRes) {
+	public Article(String url, String title, String text, Integer totalLength,
+			String jsonRes) {
 		this.url = url;
 		this.title = title;
 		this.text = text;
@@ -52,7 +53,8 @@ public class Article extends Model {
 	}
 
 	public static Article findByUrl(String url) {
-		Iterator<Article> it = find.fetch("url", url).findList().iterator();
+		Iterator<Article> it = find.where().eq("url", url).findList()
+				.iterator();
 		return it.hasNext() ? it.next() : null;
 	}
 
