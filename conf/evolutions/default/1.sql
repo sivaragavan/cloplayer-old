@@ -17,9 +17,5 @@ create table article (
 
 # --- !Downs
 
-SET REFERENTIAL_INTEGRITY FALSE;
-
 drop table if exists article;
-
-SET REFERENTIAL_INTEGRITY TRUE;
 

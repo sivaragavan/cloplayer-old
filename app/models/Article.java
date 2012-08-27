@@ -54,7 +54,7 @@ public class Article extends Model {
 	}
 
 	public static Article findByUrl(String url) {
-		return find.fetch("url", url).findUnique();
+		return find.fetch("url", url).findList().iterator().next();
 	}
 
 	public String getFileName(int index) {
