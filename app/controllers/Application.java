@@ -14,7 +14,7 @@ import org.apache.http.client.ResponseHandler;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.json.JSONObject;
+import com.amazonaws.util.json.JSONObject;
 
 import play.Logger;
 import play.libs.Comet;
@@ -89,7 +89,7 @@ public class Application extends Controller {
 
 						a = new Article(url, jsonRes.getString("title"),
 								jsonRes.getString("text"), sentences.length,
-								responseBody);
+								jsonRes);
 						a.save();
 
 						jsonRes.put("id", a.id.toString());

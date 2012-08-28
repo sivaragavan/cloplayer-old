@@ -14,6 +14,7 @@ import plugins.S3Plugin;
 
 import com.amazonaws.services.s3.model.CannedAccessControlList;
 import com.amazonaws.services.s3.model.PutObjectRequest;
+import com.amazonaws.util.json.JSONObject;
 
 @Entity
 public class Article extends Model {
@@ -31,13 +32,13 @@ public class Article extends Model {
 			Article.class);
 
 	public Article(String url, String title, String text, Integer totalLength,
-			String jsonRes) {
+			JSONObject jsonRes) {
 		this.url = url;
 		this.title = title;
 		this.text = text;
 		this.totalLength = totalLength;
 		this.downloadLength = 0;
-		this.jsonRes = jsonRes;
+		this.jsonRes = jsonRes.toString();
 	}
 
 	public static void create(Article Article) {
