@@ -44,6 +44,46 @@ var onEvent = function(event) {
 
 			break;
 
+		case "parse_complete" :
+			$("#title").html(eventJson.title);
+			$("#details").html(eventJson.text);
+
+			$("#progressBar").progressbar({
+				value : 0,
+				max : eventJson.totalLength
+			});
+
+			for (var i = 0; i < eventJson.totalLength; i++) {
+
+				$("#players").append('<div id="jquery_jplayer_' + i + '" class="jp-jplayer"></div>');
+
+				$("#jquery_jplayer_" + i).jPlayer({
+					swfPath : "http://www.jplayer.org/2.1.0/js",
+					solution : 'html, flash',
+					supplied : "wav"
+				});
+
+				$("#jquery_jplayer_" + i).jPlayer("setMedia", {
+					wav : "https://s3.amazonaws.com/com.cloplayer/" + eventJson.id + "/" + i + ".wav"
+				});
+
+				myPlayerArray["jquery_jplayer_" + i] = i;
+
+				$("#jquery_jplayer_" + i).bind($.jPlayer.event.ended, function(event) {
+					$("#progressBar").progressbar("value", myPlayerArray[$(this).attr('id')] + 1);
+					if ($("#jquery_jplayer_" + (myPlayerArray[$(this).attr('id')] + 1)).length > 0 && !paused) {
+						play(myPlayerArray[$(this).attr('id')] + 1);
+					} else {
+						stop();
+					}
+				});
+				
+			}
+			
+			play(0);
+
+			break;
+
 		case "audio_ready" :
 
 			$("#players").append('<div id="jquery_jplayer_' + eventJson.index + '" class="jp-jplayer"></div>');
@@ -58,10 +98,6 @@ var onEvent = function(event) {
 				wav : "https://s3.amazonaws.com/com.cloplayer/" + eventJson.id + "/" + eventJson.index + ".wav"
 			});
 
-			if (stopped && !paused) {
-				play(eventJson.index);
-			}
-
 			myPlayerArray["jquery_jplayer_" + eventJson.index] = eventJson.index;
 
 			$("#jquery_jplayer_" + eventJson.index).bind($.jPlayer.event.ended, function(event) {
@@ -72,6 +108,10 @@ var onEvent = function(event) {
 					stop();
 				}
 			});
+
+			if (stopped && !paused) {
+				play(eventJson.index);
+			}
 
 			break;
 	}
