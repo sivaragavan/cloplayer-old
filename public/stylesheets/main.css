@@ -25,12 +25,14 @@ html, body {
 	margin:0 auto;
 }
 #title {
+	display:none;
 	font-family:'Source Sans Pro',sans-serif;
 	font-size:xx-large;
 	padding-top:86px;
 	color:#222222;
 }
 #details {
+	display:none;
 	font-family:'Source Sans Pro',sans-serif;
 	font-size:larger;
 	padding-top:10px;
@@ -40,53 +42,108 @@ html, body {
 #footer {
 	margin:0 auto;
 	width:100%;
-	height:80px;
+	height:110px;
 	background:#444444;
 	position:absolute;
 	bottom:0;
 	left:0;
 }
-#comment {
+#info {
 	width:100%;
-	height:30px;
+	height:50px;
 	display:block;
 	background-color:#444;
 	color:#fff;
 	font-family:'Source Sans Pro',sans-serif;
+}
+#newslogo {
+	width:30px;
+	margin:10px;
+	float:left;
+}
+#newsheadline {
+	padding:15px;
+}
+#estTime {
+	padding:10px;
+	float:right;
+	font-size:small;
+}
+#comment {
+	width:100%;
+	height:20px;
+	display:block;
+	color:#fff;
+	font-family:'Source Sans Pro',sans-serif;
 	font-size:smaller;
-	text-align:right;
-	padding-top:10px;
-	margin-right:15px;
+	background-color:#444;
+}
+#commentHead {
+	width:200px;
+	padding-left:5px;
+	padding-right:5px;
+	margin-right:5px;
+	height:20px;
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+	border-radius:5px;
+	border:1px solid #777;
+	background-color:#222222;
+}
+#commentAlert {
+	width:200px;
+	padding-left:5px;
+	padding-right:5px;
+	margin-right:5px;
+	height:20px;
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+	border-radius:5px;
+	border:1px solid #222;
+	background-color:#237abf;
+	color:#222;
 }
 .play {
-	width:50px;
+	width:40px;
 	height:40px;
 	float:left;
 	display:block;
-	background-color:#333;
+	background-color:#222;
 	cursor:pointer;
 }
 .play img {
-	margin-left:5px;
-	margin-right:5px;
+	margin:5px;
+	width:30px;
+}
+.transcript {
 	width:40px;
+	height:40px;
+	float:right;
+	display:block;
+	background-color:#222;
+	cursor:pointer;
+}
+.transcript img {
+	margin:5px;
+	width:30px;
 }
 #progressArea {
 	padding-bottom:15px;
 	padding-top:15px;
 	padding-left:15px;
 	padding-right:15px;
-	margin:0 0 0 50px;
+	margin:0 40px 0 40px;
 	cursor:pointer;
+	background-color:#333;
 }
 #prog {
 	width:10px;
 	height:20px;
-	left:60px;
+	left:50px;
 	margin-top:10px;
 	margin-bottom:10px;
 	position:absolute;
-	top:40px;
+	bottom:0px;
 	display:block;
 	background-color:#ddd;
 }

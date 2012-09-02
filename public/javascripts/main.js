@@ -4,6 +4,8 @@ stopped = true;
 paused = false;
 playLength = 0;
 progSize = 0.0;
+comment = false;
+transcript = false;
 
 function onLoad() {
 	$("#jquery_jplayer_intro").jPlayer({
@@ -28,31 +30,51 @@ function onLoad() {
 		}
 	});
 
+	$("#transcript").click(function() {
+		if (!transcript) {
+			transcript = true;
+			$('#title').css('display', 'block');
+			$('#details').css('display', 'block');
+		} else {
+			transcript = false;
+			$('#title').css('display', 'none');
+			$('#details').css('display', 'none');
+		}
+	});
+
 	$("#progressBar").click(function(e) {
 		var maxWidth = $(this).css("width").slice(0, -2);
 		var clickPos = e.pageX - this.offsetLeft;
 		var pos = Math.floor(clickPos / progSize);
-		//$("#progressBar").progressbar("value", pos);
-		pause();
-		play(pos);
-		$('#prog').css("left", 60 + (progSize * (pos)));
-
+		if (pos != current) {
+			pause();
+			play(pos);
+		}
 	});
 
-	$("#progressBar").mouseover(function(e) {
+	$("#progressBar").mousemove(function(e) {
 		var maxWidth = $(this).css("width").slice(0, -2);
 		var clickPos = e.pageX - this.offsetLeft;
 		var pos = Math.floor(clickPos / progSize);
-		$('#comment').html(myPlayerArray["text_" + pos]);
-	}).mousemove(function(e) {
-		var maxWidth = $(this).css("width").slice(0, -2);
-		var clickPos = e.pageX - this.offsetLeft;
-		var pos = Math.floor(clickPos / progSize);
-		$('#comment').html(myPlayerArray["text_" + pos]);
+		if (pos != current) {
+			comment = true;
+			$('#comment').html('<span id="commentAlert">Read from</span>' + myPlayerArray["text_" + pos]);
+		} else {
+			clearComment();
+		}
 	}).mouseout(function() {
-		$('#comment').html('');
+		clearComment();
 	});
 
+}
+
+function clearComment() {
+	comment = false;
+	if (!paused) {
+		$('#comment').html('<span id="commentHead">Reading</span>' + myPlayerArray["text_" + current]);
+	} else {
+		$('#comment').html('<span id="commentHead">Paused</span>' + myPlayerArray["text_" + current]);
+	}
 }
 
 var onEvent = function(event) {
@@ -100,8 +122,6 @@ function insertAudio(i, id, text) {
 	myPlayerArray["jquery_jplayer_" + i] = i;
 
 	$("#jquery_jplayer_" + i).bind($.jPlayer.event.ended, function(event) {
-		//$("#progressBar").progressbar("value", myPlayerArray[$(this).attr('id')] + 1);
-		$('#prog').css("left", 60 + (progSize * (current + 1)));
 		if ($("#jquery_jplayer_" + (myPlayerArray[$(this).attr('id')] + 1)).length > 0 && !paused) {
 			play(myPlayerArray[$(this).attr('id')] + 1);
 		} else {
@@ -115,6 +135,7 @@ function insertAudio(i, id, text) {
 function initPlayer(eventJson) {
 	$("#title").html(eventJson.title);
 	$("#details").html(eventJson.text);
+	$('#newsheadline').html(eventJson.title);
 
 	$("#progressBar").progressbar({
 		value : 0,
@@ -122,16 +143,20 @@ function initPlayer(eventJson) {
 	});
 
 	playLength = eventJson.totalLength;
-	progSize = ($(window).width() - 80) / playLength;
+	progSize = ($(window).width() - 110) / playLength;
 
 }
 
 function play(playerId) {
+	stopped = false;
+	paused = false;
 	current = playerId;
 	$("#jquery_jplayer_" + current).jPlayer("play");
 	$("#playimg").attr("src", "/assets/images/pause.png");
-	stopped = false;
-	paused = false;
+	$('#prog').css("left", 50 + (progSize * (playerId)));
+	if (!comment) {
+		clearComment();
+	}
 }
 
 function stop() {
@@ -142,4 +167,7 @@ function pause() {
 	$("#jquery_jplayer_" + current).jPlayer("stop");
 	$("#playimg").attr("src", "/assets/images/play.png");
 	paused = true;
+	if (!comment) {
+		clearComment();
+	}
 }
