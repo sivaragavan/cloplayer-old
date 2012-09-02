@@ -54,6 +54,21 @@ public class Application extends Controller {
 
 						sendMessage(jsonRes.toString());
 
+						String text = a.text;
+						String[] sentences = text.split("\\.");
+
+						for (int i = 0; i < a.totalLength; i++) {
+
+							String sentence = sentences[i];
+
+							JSONObject tempJSON = new JSONObject();
+							tempJSON.put("event_name", "audio_ready");
+							tempJSON.put("index", i);
+							tempJSON.put("text", sentence);
+							tempJSON.put("id", a.id.toString());
+							sendMessage(tempJSON.toString());
+						}
+
 					} catch (Exception e) {
 						Logger.error("Error", e);
 					} finally {
@@ -130,6 +145,7 @@ public class Application extends Controller {
 							JSONObject tempJSON = new JSONObject();
 							tempJSON.put("event_name", "audio_ready");
 							tempJSON.put("index", i);
+							tempJSON.put("text", sentence);
 							tempJSON.put("id", a.id.toString());
 							sendMessage(tempJSON.toString());
 
