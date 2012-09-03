@@ -81,21 +81,21 @@ var onEvent = function(event) {
 	var eventJson = eval("(" + event + ")");
 	console.log(eventJson);
 
-	switch(eventJson.event_name) {
+	switch (eventJson.event_name) {
 
-		case "parse_result" :
+		case "parse_result":
 			initPlayer(eventJson);
 			break;
 
-		case "parse_complete" :
+		case "parse_complete":
 			initPlayer(eventJson);
-			//for (var i = 0; i < eventJson.totalLength; i++) {
-			//	insertAudio(i, eventJson.id);
-			//}
-			//play(0);
+			// for (var i = 0; i < eventJson.totalLength; i++) {
+			// insertAudio(i, eventJson.id);
+			// }
+			// play(0);
 			break;
 
-		case "audio_ready" :
+		case "audio_ready":
 			insertAudio(eventJson.index, eventJson.id, eventJson.text);
 			if (stopped && !paused) {
 				play(eventJson.index);
