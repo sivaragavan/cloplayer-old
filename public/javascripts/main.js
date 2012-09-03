@@ -33,12 +33,10 @@ function onLoad() {
 	$("#transcript").click(function() {
 		if (!transcript) {
 			transcript = true;
-			$('#title').css('display', 'block');
-			$('#details').css('display', 'block');
+			$('#content').show('slow');
 		} else {
 			transcript = false;
-			$('#title').css('display', 'none');
-			$('#details').css('display', 'none');
+			$('#content').hide();
 		}
 	});
 
@@ -133,7 +131,6 @@ function insertAudio(i, id, text) {
 }
 
 function initPlayer(eventJson) {
-	$("#title").html(eventJson.title);
 	$("#details").html(eventJson.text);
 	$('#newsheadline').html(eventJson.title);
 

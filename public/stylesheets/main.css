@@ -21,19 +21,13 @@ html, body {
 	margin: 0 auto;
 }
 #content {
-	width: 680px;
+	width: 80%;
+	height: 500px;
 	margin: 0 auto;
-}
-#title {
 	display: none;
-	font-family: 'Source Sans Pro', sans-serif;
-	font-size: xx-large;
-	padding-top: 86px;
-	color: #222222;
+	overflow: auto;
 }
 #details {
-	display: none;
-	font-family: 'Source Sans Pro', sans-serif;
 	font-size: larger;
 	padding-top: 10px;
 	padding-bottom: 10px;
