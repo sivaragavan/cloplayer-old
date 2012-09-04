@@ -33,7 +33,7 @@ function onLoad() {
 	$("#transcript").click(function() {
 		if (!transcript) {
 			transcript = true;
-			$('#content').show('slow');
+			$('#content').show();
 		} else {
 			transcript = false;
 			$('#content').hide();

@@ -25,41 +25,44 @@
 	</head>
 	<body>
 
-		<div id="comet-container"></div>
-
 		<div id="header">
-			<div id="hcontainer">
-				<img id="logo" src="@routes.Assets.at("images/logo_web.png")">
-			</div>
+			<img id="logo" src="@routes.Assets.at("images/logo_web.png")">
 		</div>
 
+		<div id="library">
+			<img id="logo" src="@routes.Assets.at("images/logo_web.png")">
+		</div>
+
+		<div id="info">
+			<img id="newslogo" src="@routes.Assets.at("images/techcrunch.png")">
+			<div id="estTime">
+				00:00 (approx.)
+			</div>
+			<div id="newsheadline"></div>
+		</div>
+		<div id="content">
+			<div id="details">
+				Details
+			</div>
+		</div>
+		<div id="comment"></div>
+
 		<div id="footer">
-			<div id="info">
-				<img id="newslogo" src="@routes.Assets.at("images/techcrunch.png")">
-				<div id="estTime">
-					00:00 (approx.)
-				</div>
-				<div id="newsheadline"></div>
-			</div>
-			<div id="content">
-				<div id="details">
-					Details
-				</div>
-			</div>
-			<div id="comment"></div>
 			<div id="play" class="play"><img src="/assets/images/pause.png">
 			</div>
 			<div id="transcript" class="transcript"><img src="/assets/images/three_lines.png">
 			</div>
+			<div id="prog"></div>
 			<div id="progressArea">
-				<div id="prog"></div>
 				<div class="progressBar" id="progressBar"></div>
 			</div>
-
 		</div>
 
 		<div id="players">
 			<div id="jquery_jplayer_intro" class="jp-jplayer"></div>
 		</div>
+
+		<div id="comet-container"></div>
+
 	</body>
 </html>
