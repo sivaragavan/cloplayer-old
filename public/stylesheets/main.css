@@ -23,6 +23,7 @@
 }
 #library img {
 	display: block;
+	border: 1px solid #237ABF;
 	margin: 0px auto;
 	width: 500px;
 }
