@@ -7,6 +7,14 @@ progSize = 0.0;
 comment = false;
 transcript = false;
 
+function pageSetup() {
+	if (!transcript) {
+		$('#library').css("height", ($(window).height() - 110) + 'px');
+	} else {
+		$('#library').css("height", ($(window).height() - 260) + 'px');
+	}
+}
+
 function onLoad() {
 	$("#jquery_jplayer_intro").jPlayer({
 		ready : function(event) {
@@ -34,9 +42,11 @@ function onLoad() {
 		if (!transcript) {
 			transcript = true;
 			$('#content').show();
+			pageSetup();
 		} else {
 			transcript = false;
 			$('#content').hide();
+			pageSetup();
 		}
 	});
 
@@ -141,6 +151,12 @@ function initPlayer(eventJson) {
 
 	playLength = eventJson.totalLength;
 	progSize = ($(window).width() - 110) / playLength;
+
+	for (var i = 0; i < eventJson.media.length; ++i) {
+		if(eventJson.media[i].hasOwnProperty('primary')) {
+			$("#images").html('<img src="' + eventJson.media[i].link + '">');
+		}
+	}
 
 }
 

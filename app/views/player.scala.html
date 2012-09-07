@@ -16,7 +16,11 @@
 		<script src="@routes.Assets.at("javascripts/main.js")"></script>
 		<script>
 			$(document).ready(function() {
+				pageSetup();
 				onLoad();
+			});
+			$(window).resize(function() {
+				pageSetup();
 			});
 		</script>
 
@@ -25,9 +29,9 @@
 	</head>
 	<body>
 
-		<div id="header">
-			<img id="logo" src="@routes.Assets.at("images/logo_web.png")">
-		</div>
+		<!--<div id="header">
+		<img id="logo" src="@routes.Assets.at("images/logo_web.png")">
+		</div>-->
 
 		<div id="library">
 			<img id="logo" src="@routes.Assets.at("images/logo_web.png")">
@@ -41,8 +45,11 @@
 			<div id="newsheadline"></div>
 		</div>
 		<div id="content">
+			<div id="images">
+
+			</div>
 			<div id="details">
-				Details
+
 			</div>
 		</div>
 		<div id="comment"></div>
